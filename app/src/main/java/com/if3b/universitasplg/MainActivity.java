@@ -10,40 +10,45 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.if3b.universitasplg.AdapterCard;
+import com.if3b.universitasplg.AdapterGrid;
+import com.if3b.universitasplg.DataUniversitas;
+import com.if3b.universitasplg.R;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView rvPahlawan;
-    private ArrayList<ModelPahlawan> data = new ArrayList<>();
+    private RecyclerView rvUniversitas;
+    private ArrayList<ModelUniversitas> data = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rvPahlawan = findViewById(R.id.rv_pahlawan);
-        rvPahlawan.setHasFixedSize(true);
+        rvUniversitas = findViewById(R.id.rv_universitas);
+        rvUniversitas.setHasFixedSize(true);
 
-        data.addAll(DataPahlawan.ambilDataPahlawan());
+        data.addAll(DataUniversitas.ambilDataUniversitas());
         tampilDataCard();
         //tampilDataGrid();
     }
 
     private void tampilDataCard(){
-        rvPahlawan.setLayoutManager(new LinearLayoutManager((this)));
-        AdapterCard varAdapterCard = new AdapterCard(data, MainActivity.this);
-        rvPahlawan.setAdapter(varAdapterCard);
+        rvUniversitas.setLayoutManager(new LinearLayoutManager((this)));
+        AdapterCard varAdapterCard = new AdapterCard(dataUniversitas, MainActivity.this);
+        rvUniversitas.setAdapter(varAdapterCard);
     }
 
     private void tampilDataGrid() {
-        rvPahlawan.setLayoutManager(new GridLayoutManager(this, 2));
+        rvUniversitas.setLayoutManager(new GridLayoutManager(this, 2));
         AdapterGrid varAdapterGrid = new AdapterGrid(data, MainActivity.this);
-        rvPahlawan.setAdapter(varAdapterGrid);
+        rvUniversitas.setAdapter(varAdapterGrid);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_mode, menu);
+        getMenuInflater().inflate(R.menu.menu_card, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
