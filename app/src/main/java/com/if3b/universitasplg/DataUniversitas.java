@@ -1,5 +1,6 @@
 package com.if3b.universitasplg;
 
+public class DataUniversitas {
     import java.util.ArrayList;
 
     public class DataUniversitas {
