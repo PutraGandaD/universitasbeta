@@ -1,8 +1,6 @@
 package com.if3b.UniversitasPLG;
 
-public class DataUniversitas {
-    import java.util.ArrayList;
-
+import java.util.ArrayList;
     public class DataUniversitas {
 
         public static String[][] data = new String[][]{

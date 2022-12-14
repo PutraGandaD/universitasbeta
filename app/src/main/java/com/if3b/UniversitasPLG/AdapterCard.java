@@ -1,12 +1,22 @@
-package com.if3b.universitasPLG;
+package com.if3b.UniversitasPLG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.if3b.UniversitasPLG.DetailActivity;
+import com.if3b.UniversitasPLG.ModelUniversitas;
+import com.if3b.universitasplg.R;
+
+import java.util.ArrayList;
 
 public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ClassViewHolder> {
     private ArrayList<ModelUniversitas> dataUniversitas;
@@ -26,12 +36,12 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ClassViewHolde
 
     @Override
     public void onBindViewHolder(@NonNull ClassViewHolder holder, int position) {
-        ModelUniversitas pahlawan = dataUniversitas.get(position);
-        holder.tvNama.setText(pahlawan.getNama());
-        holder.tvTentang.setText(pahlawan.getTentang());
+        ModelUniversitas universitas = dataUniversitas.get(position);
+        holder.tvNama.setText(universitas.getNama_univ());
+        holder.tvTentang.setText(universitas.getTentang_univ());
         Glide
                 .with(ctx)
-                .load(pahlawan.getFoto())
+                .load(universitas.getFoto_univ())
                 .centerCrop()
                 .into(holder.ivFoto);
 
@@ -40,9 +50,10 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ClassViewHolde
             public void onClick(View v) {
                 String xNama, xTentang, xFoto, xLogo;
 
-                xNama = pahlawan.getNama();
-                xTentang = pahlawan.getTentang();
-                xFoto = pahlawan.getFoto();
+                xNama = universitas.getNama_univ();
+                xTentang = universitas.getTentang_univ();
+                xFoto = universitas.getFoto_univ();
+                xLogo = universitas.getLogo_univ();
 
 //                Log.d("CEKNRICEK", xNama+ " | " + xTentang + " | " + xFoto);
 
@@ -50,6 +61,7 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ClassViewHolde
                 kirim.putExtra("xNama", xNama);
                 kirim.putExtra("xTentang", xTentang);
                 kirim.putExtra("xFoto", xFoto);
+                kirim.putExtra("xLogo", xLogo);
                 ctx.startActivity(kirim);
             }
         });
@@ -58,7 +70,7 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ClassViewHolde
 
     @Override
     public int getItemCount() {
-        return dataPahlawan.size();
+        return dataUniversitas.size();
     }
 
     public class ClassViewHolder extends RecyclerView.ViewHolder {

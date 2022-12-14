@@ -12,6 +12,8 @@ import android.view.MenuItem;
 
 import com.if3b.UniversitasPLG.AdapterCard;
 import com.if3b.UniversitasPLG.R;
+import com.if3b.universitasPLG.AdapterCard;
+import com.if3b.universitasplg.R;
 
 import java.util.ArrayList;
 
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         rvUniversitas = findViewById(R.id.rv_universitas);
         rvUniversitas.setHasFixedSize(true);
 
-        data.addAll(DataUniversitas.ambilDataUniversitas());
+        data.addAll(DataUniversitas.ambilDataUniveristas());
         tampilDataCard();
         //tampilDataGrid();
     }
