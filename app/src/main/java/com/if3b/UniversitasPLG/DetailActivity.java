@@ -1,4 +1,4 @@
-package com.if3b.universitasplg;
+package com.if3b.UniversitasPLG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.time.Instant;
 
 public class DetailActivity extends AppCompatActivity {
     private ImageView ivFoto;

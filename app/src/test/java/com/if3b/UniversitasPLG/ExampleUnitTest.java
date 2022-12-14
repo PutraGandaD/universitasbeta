@@ -1,4 +1,4 @@
-package com.if3b.universitasplg;
+package com.if3b.UniversitasPLG;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.if3b.universitasplg;
+package com.if3b.UniversitasPLG;
 
 public class DataUniversitas {
     import java.util.ArrayList;

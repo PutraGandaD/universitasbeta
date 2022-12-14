@@ -1,47 +1,48 @@
-package com.if3b.universitasplg;
+package com.if3b.UniversitasPLG;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ClassViewHolder> {
+public class AdapterGrid extends RecyclerView.Adapter<AdapterGrid.ClassViewHolder> {
     private ArrayList<ModelUniversitas> dataUniversitas;
     private Context ctx;
 
-    public AdapterCard(ArrayList<ModelUniversitas> dataUniversitas, Context ctx) {
-        this.dataUniversitas = dataUniversitas;
+    public AdapterGrid(ArrayList<ModelUniversitas> dataPahlawan, Context ctx) {
+        this.dataUniversitas = dataPahlawan;
         this.ctx = ctx;
     }
 
     @NonNull
     @Override
     public ClassViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View varView = LayoutInflater.from(ctx).inflate(R.layout.item_card, parent, false);
+        View varView = LayoutInflater.from(ctx).inflate(R.layout.item_grid, parent, false);
         return new ClassViewHolder(varView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ClassViewHolder holder, int position) {
-        ModelPahlawan pahlawan = dataPahlawan.get(position);
-        holder.tvNama.setText(pahlawan.getNama());
-        holder.tvTentang.setText(pahlawan.getTentang());
+        ModelUniversitas pahlawan = dataUniversitas.get(position);
         Glide
                 .with(ctx)
-                .load(pahlawan.getFoto())
+                .load(universitas.getFoto())
                 .centerCrop()
-                .into(holder.ivFoto);
+                .into(holder.ivGrid);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String xNama, xTentang, xFoto;
 
-                xNama = pahlawan.getNama();
-                xTentang = pahlawan.getTentang();
-                xFoto = pahlawan.getFoto();
+                xNama = universitas.getNama();
+                xTentang = universitas.getTentang();
+                xFoto = universitas.getFoto();
+                xLogo = universitas.getLogo();
 
 //                Log.d("CEKNRICEK", xNama+ " | " + xTentang + " | " + xFoto);
 
@@ -49,6 +50,8 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ClassViewHolde
                 kirim.putExtra("xNama", xNama);
                 kirim.putExtra("xTentang", xTentang);
                 kirim.putExtra("xFoto", xFoto);
+                kirim.putExtra("xLogo", xLogo);
+
                 ctx.startActivity(kirim);
             }
         });
@@ -61,14 +64,11 @@ public class AdapterCard extends RecyclerView.Adapter<AdapterCard.ClassViewHolde
     }
 
     public class ClassViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivFoto;
-        TextView tvNama, tvTentang;
+        ImageView ivGrid;
 
         public ClassViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivFoto = itemView.findViewById(R.id.iv_foto);
-            tvNama = itemView.findViewById(R.id.tv_nama);
-            tvTentang = itemView.findViewById(R.id.tv_tentang);
+            ivGrid = itemView.findViewById(R.id.iv_grid);
         }
     }
 }

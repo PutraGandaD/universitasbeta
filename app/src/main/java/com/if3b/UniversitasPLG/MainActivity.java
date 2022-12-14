@@ -10,10 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.if3b.universitasplg.AdapterCard;
-import com.if3b.universitasplg.AdapterGrid;
-import com.if3b.universitasplg.DataUniversitas;
-import com.if3b.universitasplg.R;
+import com.if3b.UniversitasPLG.AdapterCard;
+import com.if3b.UniversitasPLG.R;
 
 import java.util.ArrayList;
 
